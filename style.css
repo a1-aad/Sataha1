@@ -203,7 +203,7 @@ button:hover {
 /* تنسيقات قسم البطل (Hero Section) */
 .hero {
   background: url('hero-bg.jpg') no-repeat center center/cover;
-  color: white;
+  color: black;
   text-align: center;
   padding: 60px 20px;
   border-radius: 10px;
