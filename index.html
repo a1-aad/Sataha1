@@ -1,197 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>سطحة ون - نقل المركبات</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <!-- عنصر خاص بالإشعارات (Toast Container) -->
-  <div id="toastContainer"></div>
-  
-  <div class="container">
-    <!-- شريط التنقل الأساسي -->
-    <nav>
-      <ul>
-        <li><a onclick="showPage('home')">الرئيسية</a></li>
-        <li><a onclick="showPage('track')">تتبع الطلب</a></li>
-        <li><a onclick="showPage('login')">تسجيل الدخول</a></li>
-        <li><a onclick="showPage('admin'); renderAdminPanel();">لوحة الإدارة</a></li>
-      </ul>
-    </nav>
-    
-    <!-- الصفحة الرئيسية -->
-    <section id="home" class="page active">
-      <!-- قسم البطل (Hero Section) -->
-      <header class="hero">
-        <h1>مرحباً بكم في سطحة ون 🚚</h1>
-        <p>نقدم خدمات نقل المركبات المعطلة بسرعة وأمان لتلبية احتياجاتك على مدار الساعة.</p>
-        <button onclick="scrollToOrderForm()">اطلب الآن</button>
-      </header>
-      
-      <!-- قسم نموذج الطلب -->
-      <section id="orderFormSection">
-        <div class="order-form">
-          <h2>طلب سطحة</h2>
-          <form id="orderForm">
-            <div class="form-group">
-              <label for="pickup">موقع الاستلام:</label>
-              <input type="text" id="pickup" placeholder="أدخل موقع الاستلام" required />
-            </div>
-            <div class="form-group">
-              <label for="destination">الوجهة النهائية:</label>
-              <input type="text" id="destination" placeholder="أدخل الوجهة النهائية" required />
-            </div>
-            <div class="form-group">
-              <label for="vehicleType">نوع السطحة:</label>
-              <select id="vehicleType">
-                <option value="small">سطحة صغيرة</option>
-                <option value="medium">سطحة متوسطة</option>
-                <option value="large">سطحة كبيرة</option>
-              </select>
-            </div>
-            <!-- حقل رقم الجوال: يدخل من العميل ويتم تخزينه ويظهر فقط في لوحة الإدارة -->
-            <div class="form-group">
-              <label for="phone">رقم الجوال:</label>
-              <input type="text" id="phone" placeholder="أدخل رقم الجوال" required />
-            </div>
-            <button type="submit">طلب السطحة الآن</button>
-          </form>
-        </div>
-      </section>
-      
-      <!-- قسم "من نحن" -->
-      <section id="about">
-        <h2>من نحن</h2>
-        <p>
-          في سطحة ون نسعى لتقديم أفضل الخدمات في نقل المركبات المعطلة من خلال فريق مدرب وآليات تقنية متطورة لضمان سرعة الاستجابة والدقة في التنفيذ.
-          خبرتنا الطويلة ومهنيتنا تجعلنا الخيار الأمثل عند الحاجة للنقل الطارئ.
-        </p>
-      </section>
-      
-      <!-- قسم الخدمات -->
-      <section id="services">
-        <h2>خدماتنا</h2>
-        <div class="service-items">
-          <div class="service-item">
-            <h3>نقل سريع وآمن</h3>
-            <p>نوفر أسطحة سريعة الاستجابة مع أحدث تقنيات السلامة لضمان وصول طلبك في أسرع وقت ممكن.</p>
-          </div>
-          <div class="service-item">
-            <h3>متابعة آنية</h3>
-            <p>رصد مباشر لحالة طلبك عبر موقعنا وتطبيقات الهاتف لضمان اطلاعك المستمر على سير العملية.</p>
-          </div>
-          <div class="service-item">
-            <h3>دعم فني متواصل</h3>
-            <p>فريق دعم متوفر على مدار الساعة لتقديم الاستشارة والمساعدة في كل الأوقات.</p>
-          </div>
-        </div>
-      </section>
-      
-      <!-- قسم آراء العملاء -->
-      <section id="testimonials">
-        <h2>آراء العملاء</h2>
-        <div class="testimonial-items">
-          <div class="testimonial-item">
-            <p>"خدمة ممتازة وسريعة! أنصح الجميع باستخدام سطحة ون."</p>
-            <span> - محمد، جدة</span>
-          </div>
-          <div class="testimonial-item">
-            <p>"متابعة الطلب كانت سهلة والتحديثات دقيقة مما زاد من ثقتي بالخدمة."</p>
-            <span> - فاطمة، الرياض</span>
-          </div>
-          <div class="testimonial-item">
-            <p>"دعم فني متواصل وأسلوب احترافي في التعامل مع الحالات الطارئة."</p>
-            <span> - علي، الدمام</span>
-          </div>
-        </div>
-      </section>
-    </section>
-    
-    <!-- صفحة تتبع الطلب -->
-    <section id="track" class="page">
-      <header>
-        <h1>تتبع الطلب</h1>
-        <p>تابع حالة طلباتك بشكل مباشر.</p>
-      </header>
-      <div class="orders-list" id="trackOrdersList"></div>
-      <button onclick="renderOrdersTrack()">تحديث الطلبات</button>
-    </section>
-    
-    <!-- صفحة تسجيل الدخول -->
-    <section id="login" class="page">
-      <div class="login-form">
-        <h2>تسجيل الدخول</h2>
-        <form id="loginForm">
-          <div class="form-group">
-            <label for="username">اسم المستخدم:</label>
-            <input type="text" id="username" placeholder="أدخل اسم المستخدم" required />
-          </div>
-          <div class="form-group">
-            <label for="password">كلمة المرور:</label>
-            <input type="password" id="password" placeholder="أدخل كلمة المرور" required />
-          </div>
-          <button type="submit">دخول</button>
-        </form>
-        <div id="loginMessage" style="margin-top:10px; text-align:center;"></div>
-      </div>
-    </section>
-    
-    <!-- صفحة لوحة الإدارة (محصورة للمسؤول فقط) -->
-    <section id="admin" class="page">
-      <header>
-        <h1>لوحة الإدارة</h1>
-        <p>في هذه اللوحة يقوم المسؤول بمراجعة الطلبات وتحديثها (قبول أو رفض أو إكمال)، وتظهر هنا الإشعارات الخاصة بالإجراءات.</p>
-      </header>
-      <!-- قسم إدارة الطلبات مع عرض رقم الجوال -->
-      <div class="admin-panel" id="adminPanel"></div>
-      <!-- قسم الخرائط -->
-      <div class="map-container">
-        <h2>خريطة الموقع</h2>
-        <iframe
-          width="100%"
-          height="100%"
-          frameborder="0"
-          style="border:0"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18907.316956222686!2d42.435092090901825!3d16.896943562078994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15b27958d2c7b0a1%3A0xbee23175b3342c8f!2sJazan%2C%20Saudi%20Arabia!5e0!3m2!1sen!2sus!4v1682768796478!5m2!1sen!2sus"
-          allowfullscreen>
-        </iframe>
-      </div>
-      <!-- قسم الدفع -->
-      <div class="payment-form">
-        <h2>نموذج الدفع</h2>
-        <form id="paymentForm">
-          <div class="form-group">
-            <label for="cardNumber">رقم البطاقة:</label>
-            <input type="text" id="cardNumber" placeholder="أدخل رقم البطاقة" required />
-          </div>
-          <div class="form-group">
-            <label for="expiryDate">تاريخ الانتهاء:</label>
-            <input type="text" id="expiryDate" placeholder="MM/YY" required />
-          </div>
-          <div class="form-group">
-            <label for="cvv">CVV:</label>
-            <input type="text" id="cvv" placeholder="أدخل CVV" required />
-          </div>
-          <button type="submit">ادفع الآن</button>
-        </form>
-        <div id="paymentMessage" style="margin-top:10px; text-align:center;"></div>
-      </div>
-      <!-- قسم الدردشة الحية -->
-      <div class="chat-box">
-        <h2>الدردشة الحية</h2>
-        <div class="chat-messages" id="chatMessages"></div>
-        <input type="text" id="chatInput" class="chat-input" placeholder="اكتب رسالتك هنا..." />
-        <button onclick="sendChatMessage()">إرسال</button>
-      </div>
-    </section>
-    
-    <!-- الفوتر -->
-    <footer>
-      <p>&copy; 2025 سطحة ون. جميع الحقوق محفوظة.</p>
-    </footer>
-  </div>
-  <script src="script.js"></script>
-</body>
-</html>
