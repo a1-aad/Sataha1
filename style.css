@@ -198,12 +198,9 @@ button:hover {
   border-radius: 5px;
 }
 
-/* التنسيقات العامة تبقى كما هي ... */
-
-/* تنسيقات قسم البطل (Hero Section) */
 .hero {
   background: url('hero-bg.jpg') no-repeat center center/cover;
-  color: black;
+  color:black;
   text-align: center;
   padding: 60px 20px;
   border-radius: 10px;
@@ -416,7 +413,7 @@ button:hover {
   font-size: 0.95em;
 }
 
-/* تنسيقات قسم آراء العملاء - التنسيق الاحترافي كما في المثال السابق */
+/* تنسيقات قسم آراء العملاء -*/
 #testimonials {
   background-color: #f9f9f9;
   padding: 60px 20px;
@@ -481,8 +478,3 @@ button:hover {
   right: 15px;
   bottom: -20px;
 }
-
-/* باقي التنسيقات كما هي السابقة */
-/* يمكن إضافة تنسيقات إضافية في لوحة الإدارة إن رغبت */
-
-
